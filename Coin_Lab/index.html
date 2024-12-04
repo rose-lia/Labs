@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="form-div"> 
+<form id="coin-form">
+    <div>
+        <label for="coin-count">How Many Coins?</label>
+        <input type="number" id="coin-count" name="coin-count" min="1" max="100"/>
+    </div>
+    <div>
+        <label for="coin-type">Which Coin?</label>
+        <select id="coin-type" name="coin-type">
+            <option value="penny">Penny</option>
+            <option value="nickel">Nickel</option>
+            <option value="dime">Dime</option>
+            <option value="quarter">Quarter</option>
+        </select>
+    </div>
+    <div>
+        <input type="submit" class="coin-btn" value="Make Money!" />
+    </div>
+</form>
+</div>
+
+    <script src="script.js"></script> 
+</body>
+</html>

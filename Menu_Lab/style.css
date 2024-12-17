@@ -1,0 +1,70 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.body-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.header {
+    background-color: gray;
+    border: 1px solid black;
+    display: flex;
+    justify-content: end;
+    padding-top: 2px;
+    padding-right: 5px;
+    font-weight: bold;
+    position: relative;
+}
+
+.letters {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.numbers {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    display: none;
+}
+
+#menu-btn {
+    background-color: transparent;
+    border: none;
+}
+
+.menu-box {
+    justify-content: end;
+    position: absolute;
+    top: 34px;
+    right: 0px;
+    display: none;
+}
+
+.visible {
+    display: flex;
+}
+
+.menu-list {
+    border: 3px solid gray;
+    background-color: lightgrey;
+    font-size: 20px;
+    height: 175px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.links {
+    color: black;
+}

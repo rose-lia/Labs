@@ -1,0 +1,23 @@
+body {
+    background-color: lightgreen;
+}
+
+.postWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.title {
+    width: 300px;
+    font-size: 25px;
+    color: rgb(198, 62, 82);
+    text-align: center;
+}
+
+img {
+    width: 20%;
+}

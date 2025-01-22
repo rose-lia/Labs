@@ -1,10 +1,13 @@
 export default class VirtualPet {
     name: string
-    hunger: number = 50
-    happiness: number = 50
-    constructor(n: string) {
+    hunger: number
+    happiness: number
+    constructor(n: string, hun: number = 50, hap: number = 50) {
         this.name = n
+        this.hunger = hun
+        this.happiness = hap
     }
+
     describe(): string {
         return `Name: ${this.name}, Hunger: ${this.hunger}, Happiness: ${this.happiness}`
     }

@@ -1,11 +1,11 @@
-import { Racer } from "./Racer";
+import { Racer } from "./Racer"
 
 export class SolarCar implements Racer {
     team: string
-    speed: number = 0
-    constructor(team: string, speed: number) {
+    speed: number
+    constructor(team: string, speed: number = 0) {
         this.team = team
-     //   this.speed = speed
+        this.speed = speed
     }
     accelerate(): void {
         this.speed = this.speed + 1

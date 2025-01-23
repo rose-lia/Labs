@@ -1,7 +1,7 @@
 import VirtualPet from "../VirtualPet"
 import Cat from "../Cat"
 
-describe("Cat Properties", () => {
+describe("Cat properties", () => {
     it("a new instance of Cat has property name from the constructor", () => {
         const newCat = new Cat("Kashi", "color")
         expect(newCat.name).toBe("Kashi")

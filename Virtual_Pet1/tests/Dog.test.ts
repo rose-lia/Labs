@@ -1,7 +1,7 @@
-import VirtualPet from "../VirtualPet"
+// import VirtualPet from "../VirtualPet"
 import Dog from "../Dog"
 
-describe("Dog Properties", () => {
+describe("Dog properties", () => {
     it("a new instance of Dog has property name from the constructor", () => {
         const newDog = new Dog("Willow")
         expect(newDog.name).toBe("Willow")
@@ -14,8 +14,9 @@ describe("Dog Properties", () => {
         const newDog = new Dog("Willow", 50, 50)
         expect(newDog.happiness).toBe(50)
     })
+})
 
-// should this be in a separate "describe"?
+describe("Dog methods", () => {
     it("calling the play method inscreases the dog happiness by 15", () => {
         const newDog = new Dog("Willow")
         newDog.play()

@@ -51,10 +51,11 @@ describe("VirtualPet modify methods", () => {
     it("decreases the hunger by 20 when fed twice", () => {
         const virtualPet = new VirtualPet("Stella", 40, 75)
         virtualPet.feed()
+        virtualPet.feed()
         expect(virtualPet.hunger).toBe(20)
     })
     it("hunger value does not go below 0", () => {
-        const virtualPet = new VirtualPet("Lucy", 0, 30)
+        const virtualPet = new VirtualPet("Lucy", 5, 30)
         virtualPet.feed()
         expect(virtualPet.hunger).toBe(0)
     })
@@ -65,6 +66,8 @@ describe("VirtualPet modify methods", () => {
     })
     it("increases the happiness by 30 when played with 3 times", () => {
         const virtualPet = new VirtualPet("Stella", 30, 60)
+        virtualPet.play()
+        virtualPet.play()
         virtualPet.play()
         expect(virtualPet.happiness).toBe(90)
     })

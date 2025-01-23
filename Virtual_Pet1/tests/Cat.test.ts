@@ -18,8 +18,9 @@ describe("Cat properties", () => {
         const newCat = new Cat("Kashi", "color")
         expect(newCat.happiness).toBe(50)
     })
-    
-// should this be in a separate "describe"?
+}) 
+
+describe("Cat methods", () => {
     it("the getAttitude method returns inquisitive for positive satisfaction", () => {
         const newCat = new Cat("Kashi", "color", 5, 100)
         expect(newCat.getAttitude()).toBe("inquisitive")
@@ -32,7 +33,6 @@ describe("Cat properties", () => {
         const newCat = new Cat("Kashi", "color")
         expect(newCat.getAttitude()).toBe("grumpy")
     })
-// should this be in a separate "describe"?
     it("the describe method returns a string with name, hunger, happiness, color, and attitude", () => {
         const newCat = new Cat("Kashi", "Grey")
         expect(newCat.describe()).toBe("Name: Kashi, Hunger: 50, Happiness: 50, Color: Grey, Attitude: grumpy")

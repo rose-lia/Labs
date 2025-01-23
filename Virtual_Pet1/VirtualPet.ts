@@ -20,11 +20,15 @@ export default class VirtualPet {
     feed(): void {
         if (this.hunger >= 10) {
             this.hunger = this.hunger - 10
+        } else {
+            this.hunger = 0
         }
     }
     play(): void {
         if (this.happiness <= 90) {
             this.happiness = this.happiness + 10
+        } else {
+            this.happiness = 100
         }
     }
 }

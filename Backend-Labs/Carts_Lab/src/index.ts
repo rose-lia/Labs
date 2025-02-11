@@ -1,6 +1,5 @@
 import express, { json } from "express"
 import cors from "cors"
-// const uuid = require("uuid")
 
 const app = express()
 app.use(cors())
@@ -21,37 +20,60 @@ const cartItems: CartItem[] = [
 ]
 
 app.get("/cart-items", (req, res) => {
-    res.status(200).json(cartItems)
+    const { maxPrice, prefix, pageSize } = req.query
+    let filteredItems = cartItems
+    if (maxPrice) {
+        filteredItems = filteredItems.filter(item => item.price <= +maxPrice)
+    }
+    if (prefix) {
+        filteredItems = filteredItems.filter(item => item.product.toLowerCase().startsWith(String(prefix).toLowerCase()))
+    }
+    if (pageSize) {
+        filteredItems = filteredItems.slice(0, parseInt(String(pageSize)))
+    }
+    res.status(200).json(filteredItems)
   })
 
 app.get("/cart-items/:id", (req, res) => {
-    const id = parseInt(req.params.id)
-    const cartItem = cartItems.find((item) => item.id === id)
-    try {
+    const { id } = req.params
+    const cartItem = cartItems.find(item => item.id === +id)
+    if (cartItem) { 
     res.status(200).json(cartItem)
-} catch (err) {
+} else {
     res.status(404).send(`ID Not Found`)
 }
 })
 
+let nextId = cartItems.length > 0 ? Math.max(...cartItems.map(item => item.id)) + 1 : 1
 app.post("/cart-items", (req, res) => {
     const cartItem = req.body as CartItem
-    const newId = 
+    cartItem.id = nextId
+    nextId++
     cartItems.push(cartItem)
-    res.status(201).json(`${cartItem.product} added`)
+    res.status(201).json(cartItem)
 })
-/*
+
 app.put("/cart-items/:id", (req, res) => {
-    // update a single item in the array with given ID
-    res.status(200).send(`this is the updated ${cartItem}`).json(cartItem)
+    const { id } = req.params
+    const cartItem = cartItems.find(item => item.id === +id)
+    if (!cartItem) res.status(404).send("ID Not Found")
+    if (cartItem && req.body.product !== undefined) cartItem.product = req.body.product
+    if (cartItem && req.body.price !== undefined) cartItem.price = req.body.price
+    if (cartItem && req.body.quantity !== undefined) cartItem.quantity = req.body.quantity
+    res.status(200).json(cartItem)
 })
 
 app.delete("/cart-items/:id", (req, res) => {
-    // delete a single item in the array with given ID
-
-    res.status(204).send(`this ${cartItem} has been deleted`).json(cartItem)
+    const { id } = req.params
+    const cartItemIndex = cartItems.findIndex(item => item.id === +id)
+    if (cartItemIndex === -1) {
+        res.status(404).send("ID Not Found")
+    } else {
+        cartItems.splice(cartItemIndex, 1)
+        res.status(204).send()
+    }
 })
-*/
+
 const PORT = 3000
 app.listen(PORT, () =>
   console.log("listening on port " + PORT)

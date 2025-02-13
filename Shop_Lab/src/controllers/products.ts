@@ -23,7 +23,7 @@ export const getProducts: HTTPHandler = async (req, res) => {
 		}
 		if (req.query.includes !== undefined) {
 			query.name = new RegExp(req.query.includes as string, "i")
-			}
+		}
 
 		// let filteredProducts = Product.find(query)
 		// if (req.query.limit) {

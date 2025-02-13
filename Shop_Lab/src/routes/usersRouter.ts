@@ -6,7 +6,12 @@ import {
 	postUser,
 	putUser,
 } from "../controllers/users"
-import { getCartItems, postCartItem } from "../controllers/cartItems"
+import {
+	deleteCartItem,
+	getCartItems,
+	postCartItem,
+	updateCartItem,
+} from "../controllers/cartItems"
 
 const routes = Router()
 
@@ -17,5 +22,7 @@ routes.put("/:id", putUser)
 routes.delete("/:id", deleteUser)
 routes.post("/:userId/cart", postCartItem)
 routes.get("/:userId/cart", getCartItems)
+routes.patch("/:userId/cart/:productId", updateCartItem)
+routes.delete("/:userId/cart/:productId", deleteCartItem)
 
 export default routes

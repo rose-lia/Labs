@@ -5,7 +5,9 @@ import HTTPHandler from "../utils/HTTPHandler"
 
 export const getCartItems: HTTPHandler = async (req, res) => {
 	try {
-		const cartItems = await CartItem.find()
+		const cartItems = await CartItem.find({
+			userId: req.params.userId,
+		})
 		res.status(200).send(cartItems)
 	} catch (error) {
 		res.status(500).send("Bad Request!")
@@ -16,75 +18,59 @@ export const getCartItems: HTTPHandler = async (req, res) => {
 
 export const postCartItem: HTTPHandler = async (req, res) => {
 	try {
-		// // by using the userId and body of the request to
-		// check against existing cart items. Do one of two
-		// things after checking: 
-		// // - Increment the quantity
-		// // - Add a cart item to the collection using the
-		// JSON body of the request.
-		
-		// new cartitem obj in req.body of post 
-		const cartItem = new CartItem(req.body)
-		await cartItem.save()
-		res.status(201).send(cartItem)
+		const userCartItems = await CartItem.find({
+			userId: req.params.userId,
+			product: req.body.product,
+		})
+		if (userCartItems.length === 0) {
+			const cartItem = new CartItem(req.body)
+			await cartItem.save()
+			res.status(201).send(cartItem)
+		} else {
+			userCartItems[0].quantity += req.body.quantity
+			await userCartItems[0].save()
+			res.status(200).send(userCartItems[0])
+		}
 	} catch (error) {
 		res.status(400).send("Bad Request")
 	}
 }
 
-// export const makePurchase: HTTPHandler = async (req, res) => {
-// 	try {
-// 		const user = await User.findById(req.params.id)
-// 		if (!user) throw new Error("User Not Found")
-// 		const purchase = new Purchase({
-// 			...req.body,
-// 			user: user._id,
-// 		})
-// 		await purchase.save()
-// 		user.purchases.push(purchase._id)
-// 		await user.save()
-// 		res.status(201).send(purchase)
-// 	} catch (error: any) {
-// 		if (error.status === "User Not Found")
-// 			res.status(404).send(error.status)
-// 		else res.status(400).send("Bad Request")
-// 	}
-// }
+// PATCH/UPDATE ITEM
 
+export const updateCartItem: HTTPHandler = async (req, res) => {
+	try {
+		const userCartItems = await CartItem.find({
+			userId: req.params.userId,
+			product: req.params.productId,
+		})
+		if (userCartItems.length === 0) {
+			throw new Error("Cart Item Not Found")
+		} else {
+			userCartItems[0].quantity += req.body.quantity
+		}
+		await userCartItems[0].save()
+		res.status(200).send(userCartItems[0])
+	} catch (error: any) {
+		res.status(404).send(error.status)
+	}
+}
 
-// // READ ONE
+// DESTROY
 
-// export const getCartItem: HTTPHandler = async (req, res) => {
-// 	try {
-// 		const cartItem = await CartItem.findById(req.params.id)
-// 		res.status(200).send(cartItem)
-// 	} catch (error) {
-// 		res.status(404).send("Cart Item Not Found!")
-// 	}
-// }
-
-// // UPDATE
-
-// export const putCartItem: HTTPHandler = async (req, res) => {
-// 	try {
-// 		const cartItem = await CartItem.findByIdAndUpdate(
-// 			req.params.id,
-// 			req.body,
-// 			{ new: true, runValidators: true }
-// 		)
-// 		res.status(200).send(cartItem)
-// 	} catch (error) {
-// 		res.status(404).send("Cart Item not found!")
-// 	}
-// }
-
-// // DESTROY
-
-// export const deleteCartItem: HTTPHandler = async (req, res) => {
-// 	try {
-// 		await CartItem.findByIdAndDelete(req.params.id)
-// 		res.status(204).send()
-// 	} catch (error) {
-// 		res.status(404).send("Cart Item not found!")
-// 	}
-// }
+export const deleteCartItem: HTTPHandler = async (req, res) => {
+	try {
+		const userCartItems = await CartItem.find({
+			userId: req.params.userId,
+			product: req.params.productId,
+		})
+		if (userCartItems.length === 0) {
+			throw new Error("Cart Item Not Found")
+		}
+		const userCartItemId = userCartItems[0]._id
+		await CartItem.findByIdAndDelete(userCartItemId)
+		res.status(204).send()
+	} catch (error) {
+		res.status(404).send("Cart Item not found!")
+	}
+}

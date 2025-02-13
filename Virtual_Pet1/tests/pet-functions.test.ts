@@ -3,7 +3,7 @@ import Dog from "../Dog"
 import { decay, makePet } from "../pet-functions"
 import VirtualPet from "../VirtualPet"
 
-describe("decay Function", () => {
+describe("decay()", () => {
     it("hunger and happiness are adjusted accordingly", () => {
         const newPet = new VirtualPet("Tuna", 75, 25)
         decay(newPet)
@@ -22,7 +22,7 @@ describe("decay Function", () => {
     })
 })
 
-describe("makePet Function", () => {
+describe("makePet()", () => {
     it("returns a Dog with the correct name", () => {
         const newPet = makePet("Lucy", "dog")
         expect(newPet instanceof Dog).toBeTruthy()

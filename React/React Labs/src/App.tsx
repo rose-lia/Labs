@@ -1,9 +1,10 @@
-import "./App.css"
+import "./App.sass"
+import ArraysEx from "./ArraysEx"
 
 function App() {
-  
+
 	return <>
-  
+    <ArraysEx />
   </>
 }
 

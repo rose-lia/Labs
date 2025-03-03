@@ -2,6 +2,7 @@ import { FC, useState } from "react"
 import { Contact } from "../../models/Contact"
 import ContactList from "../ContactList"
 import ContactForm from "../ContactForm"
+import "./Home.css"
 
 const initialContactsState = [
 	{
@@ -28,13 +29,34 @@ const Home: FC = () => {
 	const [contacts, setContacts] = useState<Contact[]>(
 		initialContactsState
 	)
+	const handleAddContact = (contact: Contact) => {
+		setContacts((c) => [...c, contact])
+	}
+
+	const handleDeleteContact = (index: number) => {
+		const newContacts = [...contacts]
+		newContacts.splice(index, 1)
+		setContacts(newContacts)
+	}
+
+	const handleUpdateContact = (index: number) => {
+		const newContacts = [...contacts]
+		newContacts[index] = {
+			...newContacts[index],
+			isFavorite: !newContacts[index].isFavorite,
+		}
+		setContacts(newContacts)
+	}
 
 	return (
-		<>
-			<ContactList contacts={contacts} />
-            <ContactForm/>
-			
-		</>
+		<div className="form-list-container">
+			<ContactForm onAdd={handleAddContact} />
+			<ContactList
+				contacts={contacts}
+				onDelete={handleDeleteContact}
+				onUpdate={handleUpdateContact}
+			/>
+		</div>
 	)
 }
 

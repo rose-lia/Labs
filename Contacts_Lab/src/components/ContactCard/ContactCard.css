@@ -1,0 +1,57 @@
+.contact-card-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.contact-card {
+    display: flex;
+    justify-content: space-around;
+    border: .25px solid #5a7d7c;
+    padding: 25px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 320px;
+    font-family: "Space Grotesk";
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.contact-name {
+    width: 160px;
+}
+
+.contact-num-icons {
+    width: 160px;
+}
+
+.phone-num {
+    border-bottom: .25px solid #5a7d7c;
+    padding-bottom: 8px;
+    font-weight: 300;
+}
+
+.icons {
+    padding-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    width: 30px;
+    align-items: center;
+}
+
+@media screen and (min-width: 775px) {
+    .contact-card {
+        flex: 1;
+        max-width: 500px;
+    }
+
+    .contact-num-icons {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .contact-name {
+        display: flex;
+        flex: 1;
+    }
+}

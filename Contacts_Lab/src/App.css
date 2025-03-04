@@ -1,0 +1,20 @@
+.space-grotesk-small {
+	font-family: "Space Grotesk", serif;
+	font-optical-sizing: auto;
+	font-weight: 300;
+	font-style: normal;
+}
+
+.space-grotesk-large {
+	font-family: "Space Grotesk", serif;
+	font-optical-sizing: auto;
+	font-weight: 700;
+	font-style: normal;
+}
+
+body {
+	margin: 0;
+	background-color: #151b1d;
+	color: #ecf2f4;
+	font-family: "Space Grotesk";
+}

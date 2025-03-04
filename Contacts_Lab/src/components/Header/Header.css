@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #5a7d7c;
+    height: 55px;
+    margin: 0;
+}
+
+.menu-icon {
+    padding: 10px;
+}
+
+.header-title {
+    font-family: "Space Grotesk";
+    font-size: 30px;
+    margin: 0;
+    padding: 10px;
+}

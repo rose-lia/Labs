@@ -1,0 +1,8 @@
+@media screen and (min-width: 775px) {
+.cards-container {
+    padding: 40px;
+    border-left: 1px solid #5a7d7c;
+    height: 100vh;
+    flex: 3;
+}
+}

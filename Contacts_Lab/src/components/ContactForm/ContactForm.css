@@ -1,0 +1,77 @@
+.form-wrapper {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.input-label-wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 350px;
+	margin-top: 10px;
+}
+
+.input-label {
+	font-family: "Space Grotesk";
+	text-align: left;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.input-box {
+	padding: 5px;
+	border-radius: 6px;
+	border: 0;
+}
+
+.check-btn {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	width: 350px;
+	height: 100px;
+}
+
+.checkbox {
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.submit-btn {
+	border: 1px solid #e36940;
+	background-color: #151b1d;
+	color: #e36940;
+	padding: 8px 16px;
+	border-radius: 20px;
+	font-family: "Space Grotesk";
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.checkbox-align {
+	display: flex;
+	align-items: center;
+}
+
+.phone-num-alert {
+	margin-top: 5px;
+	color: #e36940;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+@media screen and (min-width: 775px) {
+	.form-wrapper {
+		flex: 2;
+		padding: 40px;
+		justify-content: start;
+		margin-top: 0;
+	}
+
+	.input-label-wrapper:first-child {
+		margin-top: 0;
+	}
+}

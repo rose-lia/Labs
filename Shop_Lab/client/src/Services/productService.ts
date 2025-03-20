@@ -19,6 +19,3 @@ export const getProducts = async (
 export const getProduct = async (id: string): Promise<Product> => {
 	return (await axios.get(`${apiUrl}/products/${id}`)).data
 }
-
-// export const postProduct = async (product: Product): Promise<void> =>
-// 	await axios.post(apiUrl + "/products", product)

@@ -12,7 +12,7 @@ const ProductCard: FC<{ product: Product }> = ({ product }) => {
 			<img
 				src={image}
 				height={45}
-                width={60}
+				width={60}
 			/>
 		</li>
 	)

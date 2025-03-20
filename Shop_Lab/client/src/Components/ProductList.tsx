@@ -25,16 +25,16 @@ const ProductList = () => {
 	}, [searchParams])
 
 	const handleFilterSubmit = (queryParams: {
-        maxPrice?: string,
-        includes? : string,
-        limit?: string
-    }) => {
-        setSearchParams(queryParams)
+		maxPrice?: string
+		includes?: string
+		limit?: string
+	}) => {
+		setSearchParams(queryParams)
 	}
 
 	return (
 		<>
-			<Filter onSubmit={handleFilterSubmit}/>
+			<Filter onSubmit={handleFilterSubmit} />
 			<ul className="product-list">
 				{products.map((product) => (
 					<ProductCard

@@ -20,6 +20,7 @@ routes.get("/", getUsers)
 routes.get("/:id", getUser)
 routes.put("/:id", putUser)
 routes.delete("/:id", deleteUser)
+
 routes.post("/:userId/cart", postCartItem)
 routes.get("/:userId/cart", getCartItems)
 routes.patch("/:userId/cart/:productId", updateCartItem)

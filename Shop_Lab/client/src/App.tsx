@@ -9,6 +9,7 @@ import Header from "./Components/Header"
 import Home from "./Components/Home"
 import ProductDetails from "./Components/ProductDetails"
 import ProductList from "./Components/ProductList"
+import Cart from "./Components/Cart"
 
 function App() {
 	return (
@@ -27,6 +28,10 @@ function App() {
 					<Route
 						path="/products/:id"
 						element={<ProductDetails />}
+					/>
+					<Route
+						path="/cart"
+						element={<Cart />}
 					/>
 					<Route
 						path="*"
